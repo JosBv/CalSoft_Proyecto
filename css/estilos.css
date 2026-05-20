@@ -1,0 +1,133 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #dc3545, #fd7e14);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.logo-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.app-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    color: #dc3545;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.section-subtitle {
+    color: #212529;
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    min-height: 46px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+    border-color: #dc3545;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.table {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table-dark th {
+    background-color: #212529 !important;
+    color: white;
+    border: none;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.footer-custom {
+    background-color: #212529;
+    margin-top: auto;
+}
+
+.filter-box {
+    min-width: 220px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.stat-box {
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: #495057;
+}
+
+.brand-title {
+    color: #ffc107; /* amarillo bootstrap */
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 991px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .filter-box {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
