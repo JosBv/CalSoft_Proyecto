@@ -131,3 +131,45 @@ body {
     }
 }
 
+
+
+
+
+/* login */
+.login-body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #dc3545, #fd7e14);
+}
+
+.login-card {
+
+    width: 360px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+.login-logo {
+
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: auto;
+    margin-bottom: 15px;
+
+}
