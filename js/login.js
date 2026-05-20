@@ -1,43 +1,68 @@
-async function login(){
+async function login() {
 
     const usuario =
-        document.getElementById("usuario").value;
+        document.getElementById("usuario").value.trim();
 
     const clave =
-        document.getElementById("clave").value;
+        document.getElementById("clave").value.trim();
 
     const mensaje =
         document.getElementById("mensaje");
 
-    const respuesta = await fetch(
-        "http://localhost:3000/login",
+    try {
 
-        {
+        const respuesta = await fetch(
+            "http://localhost:3000/login",
 
-            method: "POST",
+            {
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+                method: "POST",
 
-            body: JSON.stringify({
-                usuario,
-                clave
-            })
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    usuario: usuario,
+                    clave: clave
+                })
+
+            }
+
+        );
+
+        const data = await respuesta.json();
+
+        console.log(data);
+
+        if(data.success){
+
+            mensaje.style.color = "green";
+
+            mensaje.textContent =
+                "Login correcto";
+
+            setTimeout(() => {
+
+                window.location.href = "dashboard.html";
+
+            }, 1000);
+
+        } else {
+
+            mensaje.style.color = "red";
+
+            mensaje.textContent =
+                "Usuario o contraseña incorrectos";
 
         }
-    );
 
-    const data = await respuesta.json();
+    } catch(error){
 
-    if(data.success){
-
-        window.location.href = "pedidos.html";
-
-    } else {
+        console.log(error);
 
         mensaje.textContent =
-            "Usuario o contraseña incorrectos";
+            "Error de conexión";
 
     }
 

@@ -173,3 +173,50 @@ body {
     margin-bottom: 15px;
 
 }
+
+
+
+
+
+/* DASHBOARD */
+
+.dashboard-body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dc3545,
+            #fd7e14
+        );
+
+}
+
+.dashboard-logo {
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+}
+
+.dashboard-card {
+
+    border: none;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+
+}
+
+.dashboard-card:hover {
+
+    transform: translateY(-5px);
+
+}

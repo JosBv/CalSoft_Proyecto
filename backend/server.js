@@ -12,25 +12,34 @@ const config = {
         "Driver={ODBC Driver 18 for SQL Server};Server=(localdb)\\DataBaseJ;Database=Restaurante_;Trusted_Connection=Yes;TrustServerCertificate=Yes;"
 };
 
-sql.connect(config)
-    .then(() => {
-        console.log("Conectado a SQL Server");
-    })
-    .catch((error) => {
-        console.log("ERROR SQL:");
+app.get("/", (req, res) => {
+    res.send("Backend funcionando correctamente");
+});
+
+app.get("/test-usuarios", async (req, res) => {
+    try {
+        const pool = await sql.connect(config);
+
+        const resultado = await pool.request().query(`
+            SELECT usuario, clave, rol
+            FROM Usuarios
+        `);
+
+        res.json(resultado.recordset);
+
+    } catch (error) {
+        console.log("ERROR TEST USUARIOS:");
         console.log(error);
-    });
+
+        res.status(500).json({
+            error: "Error SQL"
+        });
+    }
+});
 
 app.post("/login", async (req, res) => {
     const usuario = req.body.usuario?.trim();
     const clave = req.body.clave?.trim();
-
-    if (!usuario || !clave) {
-        return res.json({
-            success: false,
-            message: "Faltan datos"
-        });
-    }
 
     try {
         const pool = await sql.connect(config);
@@ -45,28 +54,24 @@ app.post("/login", async (req, res) => {
                 AND LTRIM(RTRIM(clave)) = @clave
             `);
 
-        console.log("Usuario recibido:", usuario);
-        console.log("Clave recibida:", clave);
-        console.log("Filas encontradas:", resultado.recordset.length);
-
         if (resultado.recordset.length > 0) {
-            return res.json({
+            res.json({
                 success: true,
                 usuario: resultado.recordset[0].usuario,
                 rol: resultado.recordset[0].rol
             });
+        } else {
+            res.json({
+                success: false,
+                message: "Usuario o contraseña incorrectos"
+            });
         }
 
-        return res.json({
-            success: false,
-            message: "Usuario o contraseña incorrectos"
-        });
-
     } catch (error) {
-        console.log("ERROR EN LOGIN:");
+        console.log("ERROR LOGIN:");
         console.log(error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
             message: "Error del servidor"
         });
