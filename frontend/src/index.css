@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=Caveat:wght@600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Cuerpo: Inter. Títulos: Poppins (redondeada). Acentos: Caveat (script). */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat", ui-serif, cursive;
+
+  /* Paleta tipo Shellfi: navy + coral + crema + menta */
+  --color-ink: #1a1a3d;
+  --color-brand: #f15a29;
+  --color-brand-hover: #d94817;
+  --color-brand-soft: #fff0ea;
+  --color-mint: #18a558;
+  --color-mint-soft: #e7f8ee;
+  --color-canvas: #fbf9f6;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: #2a2a3c;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Títulos con la tipografía redondeada */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+::selection {
+  background-color: #ffd2c2;
+  color: #1a1a3d;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sombra muy suave estilo Apple */
+.shadow-all {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.03),
+    0 6px 20px -8px rgba(0, 0, 0, 0.08);
+}

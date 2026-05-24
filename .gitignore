@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+
+# Build del frontend (Vite)
+dist/
+*.local
+
+# Variables de entorno
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Base de datos local
+*.mdf
+*.ldf
+database/*.sqlite
+database/*.db
