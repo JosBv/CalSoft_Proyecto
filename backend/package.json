@@ -1,9 +1,13 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "calsoft-backend",
+  "version": "2.0.0",
+  "description": "API backend del sistema POS CalSoft (Express + PostgreSQL)",
+  "main": "src/server.js",
+  "type": "module",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,9 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "msnodesqlv8": "^5.2.0",
-    "mssql": "^12.5.4"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3"
   }
 }
